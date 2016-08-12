@@ -14,10 +14,17 @@ namespace WRWallet.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
+            try
+            {
+                base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+                global::Xamarin.Forms.Forms.Init(this, bundle);
+                LoadApplication(new App());
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
     }
 }
