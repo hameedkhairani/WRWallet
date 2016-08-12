@@ -9,16 +9,17 @@
                 WinPhone="20, 20, 20, 20" />
   </ContentPage.Padding>
   <ContentPage.Content>
+    <ScrollView>
     <StackLayout Orientation="Vertical">
       <ListView x:Name="AccountsListView" ItemsSource="{Binding Path=Accounts}" SelectedItem="{Binding SelectedAccount, Mode=TwoWay}">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-              <Label Text="{Binding Currency}" FontSize = "30" FontAttributes="Bold"/>
-              <Label Text="{Binding Amount}" FontSize = "30" FontAttributes="Bold"/>
-              <Button Text="Withdraw"  BackgroundColor="Maroon" TextColor="White"/>
-              <Button Text="Send"  BackgroundColor="Green" TextColor="White"/>
+              <Label Text="{Binding Currency}" FontSize = "12" FontAttributes="Bold"/>
+              <Label Text="{Binding Amount}" FontSize = "12" FontAttributes="Bold"/>
+              <Button Text="Withdraw" FontSize="10" BackgroundColor="Maroon" TextColor="White"/>
+              <Button Text="Send"  FontSize="10" BackgroundColor="Green" TextColor="White"/>
               </StackLayout>
             </ViewCell>
           </DataTemplate>
@@ -37,10 +38,31 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal">
           <Label Text="Amount"/>
-          <Entry/>
+          <Entry Width="200"/>
         </StackLayout>
-        <Button Command="{Binding SelectedAccount.SendCommand}"></Button>
+        <Button Command="{Binding SelectedAccount.SendCommand}">Send</Button>
       </StackLayout>
+
+      <StackLayout Orientation="Vertical">
+        <Label Text="Withdraw"/>
+        <Label Text="{Binding SelectedItem.Amount}"/>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Delivery Method"/>
+          <Entry Text="Cash Pickup"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Amount"/>
+          <Entry Width="200"/>
+        </StackLayout>
+        <Button Command="{Binding SelectedAccount.WithDrawCommand}">Withdraw</Button>
+
+        <Image Source="QRCode.Png" />
+
+      </StackLayout>
+      
+      
     </StackLayout>
+
+    </ScrollView>
   </ContentPage.Content>
 </ContentPage>
