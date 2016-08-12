@@ -9,19 +9,38 @@
                 WinPhone="20, 20, 20, 20" />
   </ContentPage.Padding>
   <ContentPage.Content>
-    <ListView x:Name="AccountsListView" ItemsSource="{Binding Path=Accounts}" SelectedItem="SelectedAccount">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Orientation="Horizontal">
-              <Label Text="{Binding Currency}"/>
-              <Label Text="{Binding Amount}"/>
-              <Button Text="Withdraw"/>
-              <Button Text="Send"/>
-            </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout Orientation="Vertical">
+      <ListView x:Name="AccountsListView" ItemsSource="{Binding Path=Accounts}" SelectedItem="{Binding SelectedAccount, Mode=TwoWay}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Currency}"/>
+                <Label Text="{Binding Amount}"/>
+                <Button Text="Withdraw"/>
+                <Button Text="Send"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <StackLayout Orientation="Vertical">
+        <Label Text="Send Money"/>
+         <Label Text="{Binding SelectedItem.Amount}"/>
+         <StackLayout Orientation="Horizontal">
+           <Label Text="Recipient"/>
+           <Entry Text="Antonis Gasparakis"/>
+           </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Currency"/>
+          <Entry Text="GBP"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label Text="Amount"/>
+          <Entry/>
+        </StackLayout>
+        <Button Command="{Binding SelectedAccount.SendCommand}"></Button>
+      </StackLayout>
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>

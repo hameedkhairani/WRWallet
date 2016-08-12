@@ -13,7 +13,19 @@ namespace WRWallet
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        public AccountViewModel SelectedAccount { get; set; }
+        private AccountViewModel selectedAccount;
+        private bool isSendLegendVisible;
+        public AccountViewModel SelectedAccount
+        {
+            get { return selectedAccount;}
+
+            set
+            {
+                selectedAccount = value;
+                IsSendLegendVisible = true;
+                OnPropertyChanged("selectedAccount");
+            }
+        }
         private string text="some text";
 
         public ObservableCollection<AccountViewModel> Accounts { get; set; }
@@ -26,6 +38,20 @@ namespace WRWallet
             {
                 text = value;
                 OnPropertyChanged("Text");
+                OnPropertyChanged("ISSendLegendVisible");
+            }
+        }
+
+        private bool IsSendLegendVisible
+        {
+            get
+            {
+                return isSendLegendVisible;
+            }
+            set
+            {
+                isSendLegendVisible = true;
+                OnPropertyChanged("IsSendLegendVisible");
             }
         }
         public MainPageViewModel()
@@ -36,9 +62,11 @@ namespace WRWallet
                 new AccountViewModel {Currency = "£", Amount = 2600},
                 new AccountViewModel {Currency = "E", Amount = 4000}
             };
-            this.AddCharCommand = new Command(x=> Text="test");
+            this.WithDrawCommand = new Command(x=> WithDraw());
+            this.SendCommand = new Command(x=> Send());
             this.SelectedAccount = Accounts.First();
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -46,6 +74,20 @@ namespace WRWallet
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public ICommand AddCharCommand { protected set; get; }
+        public ICommand WithDrawCommand { protected set; get; }
+
+        public ICommand SendCommand { get; set; }
+
+        private void WithDraw()
+        {
+            
+        }
+
+        private void Send()
+        {
+            
+        }
+
+
     }
 }
