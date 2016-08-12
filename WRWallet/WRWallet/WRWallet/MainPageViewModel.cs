@@ -34,7 +34,7 @@ namespace WRWallet
             {
                 new AccountViewModel {Currency = "$", Amount = 1200},
                 new AccountViewModel {Currency = "£", Amount = 2600},
-                new AccountViewModel {Currency = "E", Amount = 4000}
+                new AccountViewModel {Currency = "‎€", Amount = 4000}
             };
             this.AddCharCommand = new Command(x=> Text="test");
             this.SelectedAccount = Accounts.First();

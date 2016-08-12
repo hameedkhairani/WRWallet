@@ -13,11 +13,11 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout Orientation="Horizontal">
-              <Label Text="{Binding Currency}"/>
-              <Label Text="{Binding Amount}"/>
-              <Button Text="Withdraw"/>
-              <Button Text="Send"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+              <Label Text="{Binding Currency}" FontSize = "30" FontAttributes="Bold"/>
+              <Label Text="{Binding Amount}" FontSize = "30" FontAttributes="Bold"/>
+              <Button Text="Withdraw"  BackgroundColor="Maroon" TextColor="White"/>
+              <Button Text="Send"  BackgroundColor="Green" TextColor="White"/>
             </StackLayout>
           </ViewCell>
         </DataTemplate>
